@@ -75,6 +75,7 @@ class CameraPanel extends HTMLElement {
 		const $ = this.shadow.querySelector.bind(this.shadow)
 		$('.card-header .name').textContent = config.title || '摄像监控'		
 		this.loadScript(`https://cdn.bootcss.com/hls.js/8.0.0-beta.3/hls.min.js`).then(()=>{
+			console.log('初始化配置', config)
 			const video = $('video');
 			if(Hls.isSupported()) {
 				var hls = new Hls();
