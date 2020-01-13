@@ -6,7 +6,7 @@ class CameraPanel extends HTMLElement {
         div.className = 'camera-panel'
         div.innerHTML = `
 			<div class="card-header"><div class="name">摄像监控</div></div>
-            <video></video>
+            <video controls></video>
             <footer>
 				<div class="op" data-op="left">
 					<ha-icon icon="mdi:menu-left-outline"></ha-icon>
@@ -81,12 +81,12 @@ class CameraPanel extends HTMLElement {
 				hls.loadSource(config.url);
 				hls.attachMedia(video);
 				hls.on(Hls.Events.MANIFEST_PARSED,function() {
-				  video.play();
+					if(config.autoplay) video.play();
 			  });
 			}else{
 				video.src = config.url;
 				video.addEventListener('loadedmetadata',function() {
-				  video.play();
+				    if(config.autoplay) video.play();
 				});
 			}
 			
